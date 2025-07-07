@@ -23,23 +23,8 @@
 					<div class="box-body">
 
 						<div class="form-group">
-							<label>Judul Buku</label>
-							<input type="text" name="judul_buku" id="judul_buku" class="form-control" placeholder="Judul Buku">
-						</div>
-
-						<div class="form-group">
-							<label>Pengarang</label>
-							<input type="text" name="pengarang" id="pengarang" class="form-control" placeholder="Nama Pengarang">
-						</div>
-
-						<div class="form-group">
-							<label>Penerbit</label>
-							<input type="text" name="penerbit" id="penerbiit" class="form-control" placeholder="Penerbit">
-						</div>
-
-						<div class="form-group">
-							<label>Tahun Terbit</label>
-							<input type="number" name="th_terbit" id="th_terbit" class="form-control" placeholder="Tahun Terbit">
+							<label>Deskripsi</label>
+							<input type="text" name="deskripsi" id="deskripsi" class="form-control" placeholder="Deskripsi">
 						</div>
 
 					</div>
@@ -47,7 +32,7 @@
 
 					<div class="box-footer">
 						<input type="submit" name="Simpan" value="Simpan" class="btn btn-info">
-						<a href="?page=MyApp/data_buku" class="btn btn-warning">Batal</a>
+						<a href="?page=MyApp/data_kategoriBuku" class="btn btn-warning">Batal</a>
 					</div>
 				</form>
 			</div>
@@ -58,11 +43,8 @@
 
     if (isset ($_POST['Simpan'])){
 
-        $sql_simpan = "INSERT INTO tb_buku (id_buku,judul_buku,pengarang,penerbit,th_terbit) VALUES (
-          '".$_POST['judul_buku']."',
-          '".$_POST['pengarang']."',
-          '".$_POST['penerbit']."',
-          '".$_POST['th_terbit']."')";
+        $sql_simpan = "INSERT INTO kategori (deskripsi) VALUES (
+          '".$_POST['deskripsi']."')";
         $query_simpan = mysqli_query($koneksi, $sql_simpan);
         mysqli_close($koneksi);
 
@@ -72,7 +54,7 @@
       Swal.fire({title: 'Tambah Data Berhasil',text: '',icon: 'success',confirmButtonText: 'OK'
       }).then((result) => {
           if (result.value) {
-              window.location = 'index.php?page=MyApp/data_buku';
+              window.location = 'index.php?page=MyApp/data_kategoriBuku';
           }
       })</script>";
       }else{
@@ -80,7 +62,7 @@
       Swal.fire({title: 'Tambah Data Gagal',text: '',icon: 'error',confirmButtonText: 'OK'
       }).then((result) => {
           if (result.value) {
-              window.location = 'index.php?page=MyApp/add_buku';
+              window.location = 'index.php?page=MyApp/add_kategoriBuku';
           }
       })</script>";
     }

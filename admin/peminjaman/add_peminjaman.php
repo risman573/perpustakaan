@@ -123,7 +123,7 @@
 				Swal.fire({title: 'Tambah Data Berhasil',text: '',icon: 'success',confirmButtonText: 'OK'
 				}).then((result) => {
 					if (result.value) {
-						window.location = 'index.php?page=data_sirkul';
+						window.location = 'index.php?page=MyApp/data_peminjaman';
 					}
 				})</script>";
 			} else {
@@ -131,7 +131,7 @@
 				Swal.fire({title: 'Tambah Data Gagal',text: '',icon: 'error',confirmButtonText: 'OK'
 				}).then((result) => {
 					if (result.value) {
-						window.location = 'index.php?page=add_sirkul';
+						window.location = 'index.php?page=MyApp/add_peminjaman';
 					}
 				})</script>";
 			}
