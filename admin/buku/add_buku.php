@@ -62,12 +62,12 @@
 
 						<div class="form-group">
 							<label>Kategori</label>
-							<select name="kat_id" id="kat_id" class="form-control" required>
+							<select name="id_kat" id="id_kat" class="form-control" required>
 								<option value="">-- Pilih Kategori --</option>
 								<?php
 									$sql_kat = mysqli_query($koneksi, "SELECT * FROM kategori ORDER BY deskripsi ASC");
 									while ($data_kat = mysqli_fetch_array($sql_kat)) {
-										echo "<option value='".$data_kat['kat_id']."'>".$data_kat['deskripsi']."</option>";
+										echo "<option value='".$data_kat['id_kat']."'>".$data_kat['deskripsi']."</option>";
 									}
 								?>
 							</select>
@@ -89,11 +89,11 @@
 
     if (isset ($_POST['Simpan'])){
 
-        $sql_simpan = "INSERT INTO buku (judul_buku,pengarang,penerbit,kat_id) VALUES (
+        $sql_simpan = "INSERT INTO buku (judul_buku,pengarang,penerbit,id_kat) VALUES (
           '".$_POST['judul_buku']."',
           '".$_POST['pengarang']."',
           '".$_POST['penerbit']."',
-					'".$_POST['kat_id']."')";
+					'".$_POST['id_kat']."')";
         $query_simpan = mysqli_query($koneksi, $sql_simpan);
         mysqli_close($koneksi);
 

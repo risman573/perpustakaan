@@ -287,14 +287,14 @@ include "config/koneksi.php";
 						case 'MyApp/data_kategoriBuku':
 							include "admin/kategoriBuku/data_kategoriBuku.php";
 							break;
-						case 'MyApp/add_data_kategoriBuku':
-							include "admin/kategoriBuku/data_kategoriBuku.php";
+						case 'MyApp/add_kategoriBuku':
+							include "admin/kategoriBuku/add_kategoriBuku.php";
 							break;
-						case 'MyApp/edit_data_kategoriBuku':
-							include "admin/kategoriBuku/data_kategoriBuku.php";
+						case 'MyApp/edit_kategoriBuku':
+							include "admin/kategoriBuku/edit_kategoriBuku.php";
 							break;
-						case 'MyApp/del_data_kategoriBuku':
-							include "admin/kategoriBuku/data_kategoriBuku.php";
+						case 'MyApp/del_kategoriBuku':
+							include "admin/kategoriBuku/del_kategoriBuku.php";
 							break;
 
 						//buku

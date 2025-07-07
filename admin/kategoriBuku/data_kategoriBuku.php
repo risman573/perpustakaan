@@ -15,7 +15,7 @@
 <section class="content">
 	<div class="box box-primary">
 		<div class="box-header with-border">
-			<a href="?page=MyApp/add_buku" title="Tambah Data" class="btn btn-primary">
+			<a href="?page=MyApp/add_kategoriBuku" title="Tambah Data" class="btn btn-primary">
 				<i class="glyphicon glyphicon-plus"></i> Tambah Data</a>
 		</div>
 		<!-- /.box-header -->
@@ -32,10 +32,10 @@
 					<tbody>
 
 						<?php
-                  $no = 1;
-                  $sql = $koneksi->query("SELECT * from buku");
-                  while ($data= $sql->fetch_assoc()) {
-                ?>
+							$no = 1;
+							$sql = $koneksi->query("SELECT * from kategori");
+							while ($data= $sql->fetch_assoc()) {
+						?>
 
 						<tr>
 							<td>
@@ -46,11 +46,11 @@
 							</td>
 
 							<td>
-								<a href="?page=MyApp/edit_buku&kode=<?php echo $data['kat_id']; ?>" title="Ubah"
+								<a href="?page=MyApp/edit_kategoriBuku&kode=<?php echo $data['id_kat']; ?>" title="Ubah"
 								 class="btn btn-success">
 									<i class="glyphicon glyphicon-edit"></i>
 								</a>
-								<a href="?page=MyApp/del_buku&kode=<?php echo $data['kat_id']; ?>" onclick="return confirm('Yakin Hapus Data Ini ?')"
+								<a href="?page=MyApp/del_kategoriBuku&kode=<?php echo $data['id_kat']; ?>" onclick="return confirm('Yakin Hapus Data Ini ?')"
 								 title="Hapus" class="btn btn-danger">
 									<i class="glyphicon glyphicon-trash"></i>
 							</td>
