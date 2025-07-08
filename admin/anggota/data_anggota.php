@@ -32,6 +32,7 @@
 							<th>No. Telepon</th>
 							<th>Jenis Kelamin</th>
 							<th>Status</th>
+							<th>Username</th>
 							<th>Dibuat oleh</th>
 							<th>Aksi</th>
 						</tr>
@@ -62,6 +63,9 @@
 							</td>
 							<td>
 								<?php echo $data['status']; ?>
+							</td>
+							<td>
+								<?php echo $data['username']; ?>
 							</td>
 							<td>
 								<?php echo $data['nama_petugas']; ?>

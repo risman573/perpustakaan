@@ -36,7 +36,7 @@ if (strlen($tambah) == 1){
 			<!-- general form elements -->
 			<div class="box box-info">
 				<div class="box-header with-border">
-					<h3 class="box-title">Tambah anggota</h3>
+					<h3 class="box-title">Tambah Anggota</h3>
 					<div class="box-tools pull-right">
 						<button type="button" class="btn btn-box-tool" data-widget="collapse">
 							<i class="fa fa-minus"></i>
@@ -80,6 +80,16 @@ if (strlen($tambah) == 1){
 							<input type="number" name="no_telp" id="no_telp" class="form-control" placeholder="No. Telepon">
 						</div>
 
+						<div class="form-group">
+							<label for="username">Username</label>
+							<input type="text" name="username" id="username" class="form-control" placeholder="Username">
+						</div>
+
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" name="password" id="password" class="form-control" placeholder="Password">
+						</div>
+
 						<p>Petugas input: <strong><?php echo $_SESSION['ses_nama']; ?></strong></p>
 						<input type="hidden" name="id_petugas" value="<?php echo $_SESSION['ses_id']; ?>" />
 
@@ -99,12 +109,14 @@ if (strlen($tambah) == 1){
 
     if (isset ($_POST['Simpan'])){
 
-        $sql_simpan = "INSERT INTO anggota (nama,jk,alamat,no_telp,id_petugas) VALUES (
+        $sql_simpan = "INSERT INTO anggota (nama,jk,alamat,no_telp,id_petugas,username,password) VALUES (
           '".$_POST['nama']."',
           '".$_POST['jk']."',
           '".$_POST['alamat']."',
           '".$_POST['no_telp']."',
-					'".$_POST['id_petugas']."')";
+					'".$_POST['id_petugas']."',
+					'".$_POST['username']."',
+					'".$_POST['password']."')";
         $query_simpan = mysqli_query($koneksi, $sql_simpan);
         mysqli_close($koneksi);
 

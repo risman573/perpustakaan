@@ -86,7 +86,6 @@
 
 </html>
 
-
 <?php
 	session_start();
 	include "config/koneksi.php";
@@ -95,40 +94,62 @@
 		$username = mysqli_real_escape_string($koneksi, $_POST['username']);
 		$password = mysqli_real_escape_string($koneksi, $_POST['password']);
 
-		$sql_login = "SELECT * FROM petugas WHERE BINARY username='$username' AND password='$password'";
-		$query_login = mysqli_query($koneksi, $sql_login);
+		// Cek login sebagai PETUGAS
+		$sql_petugas = "SELECT * FROM petugas WHERE BINARY username='$username' AND password='$password'";
+		$query_petugas = mysqli_query($koneksi, $sql_petugas);
 
-		if (mysqli_num_rows($query_login) == 1) {
-			$data = mysqli_fetch_assoc($query_login);
-
+		if (mysqli_num_rows($query_petugas) == 1) {
+			$data = mysqli_fetch_assoc($query_petugas);
 			$_SESSION["ses_id"] = $data["id_petugas"];
 			$_SESSION["ses_nama"] = $data["nama"];
 			$_SESSION["ses_username"] = $data["username"];
+			$_SESSION["level_user"] = "petugas";
 
 			echo "<script>
 				Swal.fire({
-					title: 'Login Berhasil',
+					title: 'Login Berhasil sebagai Petugas',
 					icon: 'success',
 					confirmButtonText: 'OK'
-				}).then((result) => {
-					if (result.value) {
-						window.location = 'index.php';
-					}
+				}).then(() => {
+					window.location = 'index.php';
 				});
 			</script>";
-		} else {
+			exit;
+		}
+
+		// Cek login sebagai ANGGOTA
+		$sql_anggota = "SELECT * FROM anggota WHERE BINARY username='$username' AND password='$password'";
+		$query_anggota = mysqli_query($koneksi, $sql_anggota);
+
+		if (mysqli_num_rows($query_anggota) == 1) {
+			$data = mysqli_fetch_assoc($query_anggota);
+			$_SESSION["ses_id"] = $data["id_anggota"];
+			$_SESSION["ses_nama"] = $data["nama"];
+			$_SESSION["ses_username"] = $data["username"];
+			$_SESSION["level_user"] = "anggota";
+
 			echo "<script>
 				Swal.fire({
-					title: 'Login Gagal',
-					text: 'Username atau password salah',
-					icon: 'error',
-					confirmButtonText: 'Coba Lagi'
-				}).then((result) => {
-					if (result.value) {
-						window.location = 'login.php';
-					}
+					title: 'Login Berhasil sebagai Anggota',
+					icon: 'success',
+					confirmButtonText: 'OK'
+				}).then(() => {
+					window.location = 'index.php';
 				});
 			</script>";
+			exit;
 		}
+
+		// Jika tidak ditemukan di kedua tabel
+		echo "<script>
+			Swal.fire({
+				title: 'Login Gagal',
+				text: 'Username atau password salah',
+				icon: 'error',
+				confirmButtonText: 'Coba Lagi'
+			}).then(() => {
+				window.location = 'login.php';
+			});
+		</script>";
 	}
 ?>

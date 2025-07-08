@@ -51,13 +51,12 @@
 							<select name="jk" id="jk" class="form-control" required>
 								<option value="">-- Pilih --</option>
 								<?php
-                                //cek data yg dipilih sebelumnya
-                                if ($data_cek['jk'] == "Laki-laki") echo "<option value='Laki-laki' selected>Laki-laki</option>";
-                                else echo "<option value='Laki-laki'>Laki-laki</option>";
-
-                                if ($data_cek['jk'] == "Perempuan") echo "<option value='Perempuan' selected>Perempuan</option>";
-                                else echo "<option value='Perempuan'>Perempuan</option>";
-                            ?>
+                  //cek data yg dipilih sebelumnya
+                  if ($data_cek['jk'] == "Laki-laki") echo "<option value='Laki-laki' selected>Laki-laki</option>";
+                  else echo "<option value='Laki-laki'>Laki-laki</option>";
+                  if ($data_cek['jk'] == "Perempuan") echo "<option value='Perempuan' selected>Perempuan</option>";
+                  else echo "<option value='Perempuan'>Perempuan</option>";
+                ?>
 							</select>
 						</div>
 
@@ -68,8 +67,21 @@
 
 						<div class="form-group">
 							<label for="no_telp">No. Telepon</label>
-							<input class="form-control" name="no_telp" value="<?php echo $data_cek['no_telp']; ?>"
+							<input type="number" class="form-control" name="no_telp" value="<?php echo $data_cek['no_telp']; ?>"
 							/>
+						</div>
+
+						<div class="form-group">
+							<label>Username</label>
+							<input class="form-control" name="username" value="<?php echo $data_cek['username']; ?>"
+							/>
+						</div>
+
+						<div class="form-group">
+							<label for="exampleInputPassword1">Password</label>
+							<input type="password" class="form-control" name="password" id="pass" value="<?php echo $data_cek['password']; ?>"
+							/>
+							<input id="mybutton" onclick="change()" type="checkbox" class="form-checkbox"> Lihat Password
 						</div>
 
 					</div>
@@ -114,4 +126,22 @@ if (isset ($_POST['Ubah'])){
         })</script>";
     }
 }
+?>
+<script type="text/javascript">
+        function change()
+        {
+        var x = document.getElementById('pass').type;
+
+        if (x == 'password')
+        {
+            document.getElementById('pass').type = 'text';
+            document.getElementById('mybutton').innerHTML;
+        }
+        else
+        {
+            document.getElementById('pass').type = 'password';
+            document.getElementById('mybutton').innerHTML;
+        }
+        }
+    </script>
 

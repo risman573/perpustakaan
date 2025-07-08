@@ -7,6 +7,7 @@ if (isset($_SESSION["ses_username"]) == "") {
 	$data_id = $_SESSION["ses_id"];
 	$data_nama = $_SESSION["ses_nama"];
 	$data_user = $_SESSION["ses_username"];
+	$data_level = $_SESSION["level_user"];
 }
 
 //KONEKSI DB
@@ -97,6 +98,9 @@ include "config/koneksi.php";
 						<p>
 							<?php echo $data_nama; ?>
 						</p>
+						<span class="label label-warning">
+							<?php echo $data_level; ?>
+						</span>
 					</div>
 				</div>
 				</br>
@@ -104,126 +108,160 @@ include "config/koneksi.php";
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu">
 					<li class="header">MAIN NAVIGATION</li>
+						<!-- Level  -->
+						<?php
+						if ($data_level == "petugas") {
+						?>
 
+							<li class="treeview">
+								<a href="?page=petugas">
+									<i class="fa fa-dashboard"></i>
+									<span>Dashboard</span>
+									<span class="pull-right-container">
+									</span>
+								</a>
+							</li>
+
+							<li class="treeview">
+								<a href="#">
+									<i class="fa fa-folder"></i>
+									<span>Kelola Buku</span>
+									<span class="pull-right-container">
+										<i class="fa fa-angle-left pull-right"></i>
+									</span>
+								</a>
+								<ul class="treeview-menu">
+									<li>
+										<a href="?page=MyApp/data_kategoriBuku">
+											<i class="fa fa-book"></i>Kategori Buku</a>
+									</li>
+									<li>
+										<a href="?page=MyApp/data_buku">
+											<i class="fa fa-book"></i>Data Buku</a>
+									</li>
+									<!-- <li>
+										<a href="?page=MyApp/data_anggota">
+											<i class="fa fa-users"></i>Data Anggota</a>
+									</li> -->
+								</ul>
+							</li>
+
+							<!-- <li class="treeview">
+								<a href="?page=data_sirkul">
+									<i class="fa fa-refresh"></i>
+									<span>Sirkulasi</span>
+									<span class="pull-right-container">
+									</span>
+								</a>
+							</li> -->
+
+							<li class="treeview">
+								<a href="?page=MyApp/data_peminjaman">
+									<i class="fa fa-bookmark"></i>
+									<span>Peminjaman</span>
+									<span class="pull-right-container">
+									</span>
+								</a>
+							</li>
+
+							<!-- <li class="treeview">
+								<a href="#">
+									<i class="fa fa-book"></i>
+									<span>Log Peminjaman</span>
+									<span class="pull-right-container">
+										<i class="fa fa-angle-left pull-right"></i>
+									</span>
+								</a>
+								<ul class="treeview-menu">
+
+									<li>
+										<a href="?page=log_pinjam">
+											<i class="fa fa-arrow-circle-o-down"></i>Peminjaman</a>
+									</li>
+									<li>
+										<a href="?page=log_kembali">
+											<i class="fa fa-arrow-circle-o-up"></i>Pengembalian</a>
+									</li>
+								</ul>
+							</li> -->
+
+							<!-- <li class="treeview">
+								<a href="#">
+									<i class="fa fa-print"></i>
+									<span>Laporan</span>
+									<span class="pull-right-container">
+										<i class="fa fa-angle-left pull-right"></i>
+									</span>
+								</a>
+								<ul class="treeview-menu">
+									<li>
+										<a href="?page=laporan_sirkulasi">
+											<i class="fa fa-file"></i>Laporan Sirkulasi</a>
+									</li>
+								</ul>
+							</li> -->
+
+							<li class="header">SETTING</li>
+
+							<li class="treeview">
+								<a href="?page=MyApp/data_petugas">
+									<i class="fa fa-user"></i>
+									<span>Petugas Sistem</span>
+									<span class="pull-right-container">
+									</span>
+								</a>
+							</li>
+
+							<li class="treeview">
+								<a href="?page=MyApp/data_anggota">
+									<i class="fa fa-users"></i>
+									<span>Data Anggota</span>
+									<span class="pull-right-container">
+									</span>
+								</a>
+							</li>
+
+						<li>
+							<a href="logout.php">
+								<i class="fa fa-sign-out"></i>
+								<span>Logout</span>
+								<span class="pull-right-container"></span>
+							</a>
+						</li>
+
+					<?php
+					} elseif ($data_level == "anggota") {
+					?>
 						<li class="treeview">
-							<a href="index.php">
+							<a href="?page=anggota">
 								<i class="fa fa-dashboard"></i>
 								<span>Dashboard</span>
-								<span class="pull-right-container">
-								</span>
 							</a>
 						</li>
 
 						<li class="treeview">
-							<a href="#">
-								<i class="fa fa-folder"></i>
-								<span>Kelola Buku</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-left pull-right"></i>
-								</span>
-							</a>
-							<ul class="treeview-menu">
-								<li>
-									<a href="?page=MyApp/data_kategoriBuku">
-										<i class="fa fa-book"></i>Kategori Buku</a>
-								</li>
-								<li>
-									<a href="?page=MyApp/data_buku">
-										<i class="fa fa-book"></i>Data Buku</a>
-								</li>
-								<!-- <li>
-									<a href="?page=MyApp/data_anggota">
-										<i class="fa fa-users"></i>Data Anggota</a>
-								</li> -->
-							</ul>
-						</li>
-
-						<!-- <li class="treeview">
-							<a href="?page=data_sirkul">
-								<i class="fa fa-refresh"></i>
-								<span>Sirkulasi</span>
-								<span class="pull-right-container">
-								</span>
-							</a>
-						</li> -->
-
-						<li class="treeview">
-							<a href="?page=MyApp/data_peminjaman">
-								<i class="fa fa-bookmark"></i>
-								<span>Peminjaman</span>
-								<span class="pull-right-container">
-								</span>
-							</a>
-						</li>
-
-						<!-- <li class="treeview">
-							<a href="#">
+							<a href="?page=peminjaman_saya">
 								<i class="fa fa-book"></i>
-								<span>Log Peminjaman</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-left pull-right"></i>
-								</span>
+								<span>Peminjaman Saya</span>
 							</a>
-							<ul class="treeview-menu">
-
-								<li>
-									<a href="?page=log_pinjam">
-										<i class="fa fa-arrow-circle-o-down"></i>Peminjaman</a>
-								</li>
-								<li>
-									<a href="?page=log_kembali">
-										<i class="fa fa-arrow-circle-o-up"></i>Pengembalian</a>
-								</li>
-							</ul>
-						</li> -->
-
-						<!-- <li class="treeview">
-							<a href="#">
-								<i class="fa fa-print"></i>
-								<span>Laporan</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-left pull-right"></i>
-								</span>
-							</a>
-							<ul class="treeview-menu">
-								<li>
-									<a href="?page=laporan_sirkulasi">
-										<i class="fa fa-file"></i>Laporan Sirkulasi</a>
-								</li>
-							</ul>
-						</li> -->
-
-
-
-
-						<li class="header">SETTING</li>
+						</li>
 
 						<li class="treeview">
-							<a href="?page=MyApp/data_petugas">
+							<a href="?page=profil_anggota">
 								<i class="fa fa-user"></i>
-								<span>Petugas Sistem</span>
-								<span class="pull-right-container">
-								</span>
+								<span>Profil Saya</span>
 							</a>
 						</li>
 
-						<li class="treeview">
-							<a href="?page=MyApp/data_anggota">
-								<i class="fa fa-users"></i>
-								<span>Data Anggota</span>
-								<span class="pull-right-container">
-								</span>
+						<li>
+							<a href="logout.php">
+								<i class="fa fa-sign-out"></i>
+								<span>Logout</span>
 							</a>
 						</li>
-
-					<li>
-						<a href="logout.php">
-							<i class="fa fa-sign-out"></i>
-							<span>Logout</span>
-							<span class="pull-right-container"></span>
-						</a>
-					</li>
-
+					<?php
+					}
+					?>
 
 			</section>
 			<!-- /.sidebar -->
@@ -241,12 +279,12 @@ include "config/koneksi.php";
 					$hal = $_GET['page'];
 
 					switch ($hal) {
-						//Klik Halaman Home petugas
-						case 'admin':
-							include "home/admin.php";
-							break;
+						//Klik Halaman Home Pengguna
 						case 'petugas':
 							include "home/petugas.php";
+							break;
+						case 'anggota':
+							include "home/anggota.php";
 							break;
 
 						//petugas
@@ -283,7 +321,7 @@ include "config/koneksi.php";
 							include "admin/anggota/print_allanggota.php";
 							break;
 
-						//kateori buku
+						//kategori buku
 						case 'MyApp/data_kategoriBuku':
 							include "admin/kategoriBuku/data_kategoriBuku.php";
 							break;
@@ -354,6 +392,14 @@ include "config/koneksi.php";
 							include "admin/laporan/print_laporan.php";
 							break;
 
+						// khusus anggota
+						case 'peminjaman_saya':
+							include "anggota/peminjaman_saya.php";
+							break;
+						case 'profil_anggota':
+							include "anggota/profil_anggota.php";
+							break;
+
 							//default
 						default:
 							echo "<center><br><br><br><br><br><br><br><br><br>
@@ -362,13 +408,16 @@ include "config/koneksi.php";
 					}
 
 				} else {
-					// Default ke dashboard jika tidak ada ?page=
-					include "home/admin.php";
+					// Default ke dashboard sesuai level
+					if ($data_level == "petugas") {
+						include "home/petugas.php";
+					} elseif ($data_level == "anggota") {
+						include "home/anggota.php";
+					} else {
+						include "home/petugas.php";
+					}
 				}
 			?>
-
-
-
 			</section>
 			<!-- /.content -->
 		</div>
