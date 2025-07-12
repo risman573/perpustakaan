@@ -1,5 +1,5 @@
-migrate db in config/perpustakan.sql
+db in config/perpustakan.sql
 
-Login dengan
+Login Petugas :
 username : nurman
 password : nurman

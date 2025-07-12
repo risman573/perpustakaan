@@ -1,6 +1,6 @@
 <section class="content-header">
 	<h1 style="text-align:center;">
-		Data Buku
+		Data Buku SIP
 	</h1>
 	<!-- <ol class="breadcrumb">
 		<li>
