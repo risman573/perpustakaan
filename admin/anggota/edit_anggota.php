@@ -76,14 +76,6 @@
 							<input class="form-control" name="username" value="<?php echo $data_cek['username']; ?>"
 							/>
 						</div>
-
-						<div class="form-group">
-							<label for="exampleInputPassword1">Password</label>
-							<input type="password" class="form-control" name="password" id="pass" value="<?php echo $data_cek['password']; ?>"
-							/>
-							<input id="mybutton" onclick="change()" type="checkbox" class="form-checkbox"> Lihat Password
-						</div>
-
 					</div>
 					<!-- /.box-body -->
 
